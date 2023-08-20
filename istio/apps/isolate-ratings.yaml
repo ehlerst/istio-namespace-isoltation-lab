@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Sidecar
+metadata:
+  name: isolate
+  namespace: ratings
+spec:
+  egress:
+    - hosts:
+        - ./*.istio-system.svc.cluster.local
+        - productpage/*
+  workloadSelector:
+    labels:
+      app: ratings

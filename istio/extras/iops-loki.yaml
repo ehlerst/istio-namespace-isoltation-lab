@@ -1,0 +1,42 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  meshConfig:
+    extensionProviders:
+      - name: otel
+        envoyOtelAls:
+          service: opentelemetry-collector.kube-system.svc.cluster.local
+          port: 4317
+          logFormat:
+            labels:
+              pod: "%ENVIRONMENT(POD_NAME)%"
+              namespace: "%ENVIRONMENT(POD_NAMESPACE)%"
+              cluster: "%ENVIRONMENT(ISTIO_META_CLUSTER_ID)%"
+              mesh: "%ENVIRONMENT(ISTIO_META_MESH_ID)%"
+              authority: '%REQ(:AUTHORITY)%'
+              bytes_received: '%BYTES_RECEIVED%'
+              bytes_sent: '%BYTES_SENT%'
+              connection_termination_details: '%CONNECTION_TERMINATION_DETAILS%'
+              downstream_local_address: '%DOWNSTREAM_LOCAL_ADDRESS%'
+              downstream_remote_address: '%DOWNSTREAM_REMOTE_ADDRESS%'
+              downstream_tls_version: '%DOWNSTREAM_TLS_VERSION%'
+              duration: '%DURATION%'
+              method: '%REQ(:METHOD)%'
+              path: '%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%'
+              protocol: '%PROTOCOL%'
+              request_id: '%REQ(X-REQUEST-ID)%'
+              requested_server_name: '%REQUESTED_SERVER_NAME%'
+              response_code: '%RESPONSE_CODE%'
+              response_code_details: '%RESPONSE_CODE_DETAILS%'
+              response_flags: '%RESPONSE_FLAGS%'
+              route_name: '%ROUTE_NAME%'
+              start_time: '%START_TIME%'
+              upstream_cluster: '%UPSTREAM_CLUSTER%'
+              upstream_host: '%UPSTREAM_HOST%'
+              upstream_local_address: '%UPSTREAM_LOCAL_ADDRESS%'
+              upstream_service_time: '%RESP(X-ENVOY-UPSTREAM-SERVICE-TIME)%'
+              upstream_transport_failure_reason: '%UPSTREAM_TRANSPORT_FAILURE_REASON%'
+              user_agent: '%REQ(USER-AGENT)%'
+              trace_id: '%REQ(TRACE-ID)%'
+              x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'
+              x_envoy_attempt_count: '%REQ(X-ENVOY-ATTEMPT-COUNT)%'
