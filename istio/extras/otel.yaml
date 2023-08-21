@@ -18,7 +18,7 @@ data:
         actions:
         - action: insert
           key: loki.attribute.labels
-          value: pod, namespace,cluster,mesh
+          value: pod,namespace,cluster,mesh,authority,bytes_received,bytes_sent,connection_termination_details,downstream_local_address,downstream_remote_address,downstream_tls_version,duration,method,path,protocol,request_id,requested_server_name,response_code,response_code_details,response_flags,route_name,start_time,upstream_cluster,upstream_host,upstream_local_address,upstream_service_time,upstream_transport_failure_reason,user_agent,trace_id,x_forwarded_for,x_envoy_attempt_count
     exporters:
       loki:
         endpoint: "http://loki.istio-system.svc:3100/loki/api/v1/push"
