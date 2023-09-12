@@ -44,3 +44,10 @@ mTLS is lost when you isloate, you are essentially breaking the mesh.
 "downstream_tls_version":"-"
 
 ```
+
+
+### Do labels hurt your performance
+
+run tests/mass-services.sh with grafana ui open
+
+initial results https://snapshots.raintank.io/dashboard/snapshot/qhoFT0QnzVOdBaa63elC4HcVYvhJ6RCg

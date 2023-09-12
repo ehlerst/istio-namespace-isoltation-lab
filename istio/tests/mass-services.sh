@@ -37,7 +37,6 @@ kubectl -n pause rollout status deployment pause --timeout=60s
 ENDDATE=$(date +%s%3N)
 annotate_grafana $STARTDATE $ENDDATE "rollout basic service"
 sleep $PAUSE
-sleep $PAUSE
 
 ## Remove basic so we have a clean biglabel
 STARTDATE=$(date +%s%3N)
@@ -64,7 +63,6 @@ kubectl -n pause rollout restart deployment pause
 kubectl -n pause rollout status deployment/pause --timeout=60s
 ENDDATE=$(date +%s%3N)
 annotate_grafana $STARTDATE $ENDDATE "rollout pods biglabel"
-sleep $PAUSE
 sleep $PAUSE
 
 ## Cleanup lab 
