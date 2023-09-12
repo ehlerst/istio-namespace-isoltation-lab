@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pause
+  namespace: pause
+  labels:
+    app: pause
+spec:
+  ports:
+  - port: 9001
+    name: http
+  selector:
+    app: pause
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pause
+  namespace: pause
+spec:
+  replicas: 20
+  selector:
+    matchLabels:
+      app: pause
+  template:
+    metadata:
+      labels:
+        app: pause
+    spec:
+      containers:
+      - name: pause
+        image: rancher/pause:3.6
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9001

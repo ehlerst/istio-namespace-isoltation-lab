@@ -48,8 +48,11 @@ istio-apps: kind-context
 	-kubectl label ns details istio-injection=enabled --overwrite
 	-kubectl create ns productpage
 	-kubectl label ns productpage istio-injection=enabled --overwrite
+	-kubectl create ns pause
+	-kubectl label ns pause istio-injection=enabled --overwrite
 	kubectl apply -f istio/apps/bookinfo.yaml
-
+	kubectl apply -f istio/apps/pause.yaml
+	
 istio-restart-apps: kind-context
 	kubectl -n reviews rollout restart deployment
 	kubectl -n ratings rollout restart deployment

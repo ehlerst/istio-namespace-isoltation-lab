@@ -2,20 +2,20 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: reviews
+    app: pause
     group: load
     app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/name: reviews
+    app.kubernetes.io/name: pause
     app.kubernetes.io/version: 320d294de4310588c6aed304277d55e56e385159
     helm.sh/chart: some-fancy-chart-name
     helm.toolkit.fluxcd.io/name: un-necessarily-long-app-name
-    helm.toolkit.fluxcd.io/namespace: reviews
+    helm.toolkit.fluxcd.io/namespace: pause
     k8s.corporatelabelry.com/instance: master
     k8s.corporatelabelry.com/reason: branch
     k8s.corporatelabelry.com/release: test-usw2
     corperateauditor-auditism.corporatelabelry.com/eligible: "true"
-  name: reviews-biglabels-_SEDME_
-  namespace: reviews
+  name: pause-biglabels-_SEDME_
+  namespace: pause
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:
@@ -27,6 +27,6 @@ spec:
     protocol: TCP
     targetPort: 9080
   selector:
-    app: reviews
+    app: pause
   sessionAffinity: None
   type: ClusterIP
